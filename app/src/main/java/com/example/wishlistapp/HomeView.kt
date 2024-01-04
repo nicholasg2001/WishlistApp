@@ -19,11 +19,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.wishlistapp.data.DummyWish
 import com.example.wishlistapp.data.Wish
 
 @Composable
-fun HomeView(){
+fun HomeView(
+    navController: NavController,
+    viewModel: WishViewModel,
+){
 
     Scaffold(
         topBar = { TopBarView(title = "Wishlist", {  })
@@ -33,7 +37,9 @@ fun HomeView(){
                 modifier = Modifier.padding(all = 20.dp),
                 contentColor = Color.White,
                 backgroundColor = Color.Black,
-                onClick = { }
+                onClick = {
+                    navController.navigate(Screen.AddScreen.route)
+                }
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = null)
             }

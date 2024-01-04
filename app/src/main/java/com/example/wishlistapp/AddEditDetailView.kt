@@ -35,48 +35,52 @@ fun AddEditDetailView(
         topBar = { TopBarView(title =
         if(id != 0L) stringResource(id = R.string.update_wish)
         else stringResource(id = R.string.add_wish)
-        )}) {
-        Column(modifier = Modifier
-            .padding(it)
-            .wrapContentSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+        ) {navController.navigateUp()}},
+
             ) {
-            Spacer(modifier = Modifier.height(10.dp))
+            Column(modifier = Modifier
+                .padding(it)
+                .wrapContentSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+                ) {
+                Spacer(modifier = Modifier.height(10.dp))
 
-            WishTextField(label = "Title",
-                value = viewModel.wishTitleState,
-                onValueChanged = {
-                    viewModel.onWishTitleChanged(it)
-                })
+                WishTextField(label = "Title",
+                    value = viewModel.wishTitleState,
+                    onValueChanged = {
+                        viewModel.onWishTitleChanged(it)
+                    })
 
-            Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
-            WishTextField(label = "Description",
-                value = viewModel.wishDescriptionState,
-                onValueChanged = {
-                    viewModel.onWishDescriptionChanged(it)
-                })
+                WishTextField(label = "Description",
+                    value = viewModel.wishDescriptionState,
+                    onValueChanged = {
+                        viewModel.onWishDescriptionChanged(it)
+                    })
 
-            Spacer(modifier = Modifier.height(10.dp))
-            Button(onClick = {
-                if(viewModel.wishTitleState.isNotEmpty()
-                    && viewModel.wishDescriptionState.isNotEmpty()){
-                    //update wish
-                }
-            } ){
-                Text(
-                    text = if (id != 0L) stringResource(id = R.string.update_wish)
-                    else stringResource(
-                        id = R.string.add_wish
-                    ),
-                    style = TextStyle(
-                        fontSize = 18.sp
+                Spacer(modifier = Modifier.height(10.dp))
+                Button(onClick = {
+                    if(viewModel.wishTitleState.isNotEmpty()
+                        && viewModel.wishDescriptionState.isNotEmpty()){
+                        //TODO update wish
+                    } else {
+                        //TODO add wish
+                    }
+                } ){
+                    Text(
+                        text = if (id != 0L) stringResource(id = R.string.update_wish)
+                        else stringResource(
+                            id = R.string.add_wish
+                        ),
+                        style = TextStyle(
+                            fontSize = 18.sp
+                        )
                     )
-                )
+                }
             }
         }
-    }
 
 }
 
