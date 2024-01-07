@@ -43,7 +43,7 @@ fun HomeView(
 ){
 
     Scaffold(
-        topBar = { TopBarView(title = "Wishlist", {  })
+        topBar = { TopBarView(title = "Wishlist", { /**/ })
         },
         floatingActionButton = {
             FloatingActionButton(
